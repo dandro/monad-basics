@@ -53,20 +53,24 @@ function swapRoute(index) {
     .then(() => Router.routes[index].transitionIn());
 }
 
-function nextRoute() {
-  const next = Router.current + 1;
-  return next < Router.routes.length ? swapRoute(next) : Promise.resolve();
-}
-
-function prevRoute() {
-  const prev = Router.current - 1;
-  return prev >= 0 ? swapRoute(prev) : Promise.resolve();
-}
-
 function mountRouteByHash(hash) {
   const elementIndex = Router.routes.findIndex(
     route => route.element.id === hash);
   return ~elementIndex ? swapRoute(elementIndex) : Promise.resolve();
+}
+
+function nextRoute() {
+  const next = Router.current + 1;
+  return next < Router.routes.length
+    ? Promise.resolve(Router.routes[next].element.id)
+    : Promise.reject();
+}
+
+function prevRoute() {
+  const prev = Router.current - 1;
+  return prev >= 0
+    ? Promise.resolve(Router.routes[prev].element.id)
+    : Promise.reject();
 }
 
 let __ANIMATING__ = false;
@@ -84,10 +88,16 @@ window.addEventListener('keydown', function(event) {
   if (!__ANIMATING__) {
     switch (event.code) {
       case 'ArrowDown':
-        animateRoute(nextRoute);
+        nextRoute().then(
+          hash => {
+            window.location.hash = hash;
+          });
         break;
       case 'ArrowUp':
-        animateRoute(prevRoute);
+        prevRoute().then(
+          hash => {
+            window.location.hash = hash;
+          });
         break;
     }
   }
@@ -96,9 +106,15 @@ window.addEventListener('keydown', function(event) {
 window.addEventListener('mousewheel', function(event) {
   if (!__ANIMATING__) {
     if (event.wheelDelta > 0) {
-      animateRoute(prevRoute);
+      prevRoute().then(
+        hash => {
+          window.location.hash = hash;
+        });
     } else {
-      animateRoute(nextRoute);
+      nextRoute().then(
+        hash => {
+          window.location.hash = hash;
+        });
     }
   }
 });
