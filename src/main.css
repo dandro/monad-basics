@@ -1,6 +1,97 @@
+/*
+green: #C1F546;
+blue: #64D6D7;
+red: #FF4159;
+orange: #FF9543;
+pink: #C43479;
+purple: #AC3AAE;
+black: #333333;
+white: #F7F7F7
+gray: #CDCDCD;
+
+*/
+
 body {
 	margin: 0;
 	font: 16px/1 Arial, Helvetica, sans-serif;
+	background-color: #F7F7F7;
+	color: #333;
+}
+
+.heading__one {
+	font-size: 64px;
+	font-family: 'cormorantbold', "Times New Roman", serif;
+	font-style: normal;
+	font-weight: bold;
+	line-height: 78px;
+	margin-top: 0;
+	margin-bottom: 30px;
+}
+
+.heading__two {
+	font-size: 24px;
+	font-family: 'cormorantbold', "Times New Roman", serif;
+	font-style: normal;
+	font-weight: bold;
+	line-height: 0.9;
+	margin-bottom: 10px;
+}
+
+.heading__two:not(.heading__two--first) {
+	margin-top: 30px;
+}
+
+.heading__two--first {
+	margin-top: 0;
+}
+
+.paragraph {
+	font-size: 16px;
+	font-family: 'cormorantregular', "Times New Roman", serif;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 27px;
+	text-align: justify;
+	margin-top: 0;
+}
+
+.code {
+	background-color: #EBEBEB;
+	display: block;
+	font-size: 16px;
+	line-height: 22px;
+	border-radius: 7px;
+	padding-left: 10px;
+	padding-right: 10px;
+	font-family: 'cormorantregular', "Times New Roman", serif;
+	white-space: pre;
+}
+
+.columns {
+	display: flex;
+}
+
+.columns__col:not(:last-child) {
+	margin-right: 30px;
+}
+
+.columns__col {
+	width: 300px;
+}
+
+.list {
+	margin-top: 0;
+}
+
+.list__item {
+	margin-left: 0;
+	margin-bottom: 5px;
+	font-size: 16px;
+	font-family: 'cormorantregular', "Times New Roman", serif;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 22px;
+	text-align: justify;
 }
 
 .main {
@@ -11,23 +102,36 @@ body {
 
 .page {
 	flex: 1;
+	align-items: center;
+	justify-content: center;
 }
 
-.page h2 {
-	margin-top: 0;
+.page__content {
+	width: 100%;
+	max-width: 960px;
 }
 
 .nav {
 	flex: 0 1 0;
 	align-self: center;
-	padding-left: 15px;
-	padding-right: 15px;
+	padding-left: 25px;
+	padding-right: 25px;
 }
 
 .nav__link {
 	display: inline-block;
-	border: 1px solid #DDD;
+	background-color: #F7F7F7;
+	border: 1px solid #CDCDCD;
 	border-radius: 50%;
-	padding: 10px;
-	margin-bottom: 15px;
+	width: 15px;
+	height: 15px;
+	margin-bottom: 17px;
+}
+
+.nav__link--active {
+	background-color: #AC3AAE;
+}
+
+.nav__link:hover {
+	box-shadow: -2px 3px 4px rgba(0, 0, 0, 0.15)
 }

@@ -1,4 +1,4 @@
-const ANIMATION_TIMING = 500;
+const ANIMATION_TIMING = 150;
 
 function makeRoute(id) {
   const element = document.getElementById(id);
@@ -7,7 +7,7 @@ function makeRoute(id) {
     transitionIn() {
       return new Promise(
         res => {
-          element.style.display = 'block';
+          element.style.display = 'flex';
           element.style.opacity = '1';
           setTimeout(res, ANIMATION_TIMING);
         });
@@ -36,11 +36,12 @@ const Router = {
 };
 
 function initRouter() {
-  const hash = window.location.hash.substr(1);
+  const hash = window.location.hash;
   if (hash) {
-    mountRouteByHash(hash);
+    mountRouteByHash(hash.substr(1)).then(updateActiveLink.bind(null, hash));
   } else {
     Router.routes[0].transitionIn();
+    updateActiveLink(Router.routes[0].element.getAttribute('href'));
   }
 }
 
@@ -63,25 +64,28 @@ function nextRoute() {
   const next = Router.current + 1;
   return next < Router.routes.length
     ? Promise.resolve(Router.routes[next].element.id)
-    : Promise.reject();
+    : Promise.reject(new Error('Last route allowed.'));
 }
 
 function prevRoute() {
   const prev = Router.current - 1;
   return prev >= 0
     ? Promise.resolve(Router.routes[prev].element.id)
-    : Promise.reject();
+    : Promise.reject(new Error('Last route allowed.'));
 }
 
 let __ANIMATING__ = false;
 
 function animateRoute(asyncFunc) {
   __ANIMATING__ = true;
-  window.requestAnimationFrame(() => {
-    asyncFunc().then(() => {
-      __ANIMATING__ = false;
+  return new Promise(
+    res => {
+      window.requestAnimationFrame(() => {
+        res(asyncFunc().then(() => {
+          __ANIMATING__ = false;
+        }));
+      });
     });
-  });
 }
 
 window.addEventListener('keydown', function(event) {
@@ -91,13 +95,15 @@ window.addEventListener('keydown', function(event) {
         nextRoute().then(
           hash => {
             window.location.hash = hash;
-          });
+          }).catch(
+          e => console.log(e.message));
         break;
       case 'ArrowUp':
         prevRoute().then(
           hash => {
             window.location.hash = hash;
-          });
+          }).catch(
+          e => console.log(e.message));
         break;
     }
   }
@@ -109,16 +115,32 @@ window.addEventListener('mousewheel', function(event) {
       prevRoute().then(
         hash => {
           window.location.hash = hash;
-        });
+        }).catch(
+        e => console.log(e.message));
     } else {
       nextRoute().then(
         hash => {
           window.location.hash = hash;
-        });
+        }).catch(
+        e => console.log(e.message));
     }
   }
 });
 
+function updateActiveLink(hash) {
+  document
+    .querySelectorAll('.nav__link')
+    .forEach(
+      link => {
+        link.classList.remove('nav__link--active');
+        if (link.getAttribute('href') === hash) {
+          link.classList.add('nav__link--active');
+        }
+      });
+}
+
 window.addEventListener('hashchange', function() {
-  animateRoute(mountRouteByHash.bind(null, window.location.hash.substr(1)));
+  const hash = window.location.hash;
+  animateRoute(mountRouteByHash.bind(null, hash.substr(1)))
+    .then(updateActiveLink.bind(null, hash));
 });
