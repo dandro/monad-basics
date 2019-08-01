@@ -131,12 +131,10 @@ body {
 @keyframes k-fadeIn {
 	0% {
 		opacity: 0;
-		/*transform: translateX(-1.5%);*/
 	}
 
 	100% {
 		opacity: 1;
-		/*transform: translateX(0);*/
 	}
 }
 
@@ -147,7 +145,7 @@ body {
 	}
 
 	75% {
-		transform: translateX(5%);
+		transform: translateX(3%);
 	}
 
 	100% {

@@ -7,10 +7,12 @@ function makeRoute(id) {
     transitionIn() {
       return new Promise(
         res => {
-          element.style.display = 'flex';
           element.classList.remove('fadeOut');
           element.classList.add('fadeIn');
-          setTimeout(res, ANIMATION_TIMING);
+          setTimeout(() => {
+            element.style.display = 'flex';
+            res();
+          }, ANIMATION_TIMING);
         });
     },
     transitionOut() {
