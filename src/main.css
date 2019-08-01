@@ -58,12 +58,12 @@ body {
 .code {
 	background-color: #EBEBEB;
 	display: block;
-	font-size: 16px;
+	font-size: 13px;
 	line-height: 22px;
 	border-radius: 7px;
 	padding-left: 10px;
 	padding-right: 10px;
-	font-family: 'cormorantregular', "Times New Roman", serif;
+	font-family: monospace;
 	white-space: pre;
 }
 
@@ -72,66 +72,99 @@ body {
 }
 
 .columns__col:not(:last-child) {
-	margin-right: 30px;
+	margin-right: 40px;
 }
 
 .columns__col {
-	width: 300px;
-}
-
-.list {
-	margin-top: 0;
-}
-
-.list__item {
-	margin-left: 0;
-	margin-bottom: 5px;
-	font-size: 16px;
-	font-family: 'cormorantregular', "Times New Roman", serif;
-	font-style: normal;
-	font-weight: normal;
-	line-height: 22px;
-	text-align: justify;
+	width: 340px;
 }
 
 .main {
 	display: flex;
 	width: 100vw;
 	height: 100vh;
+	overflow: hidden;
 }
 
 .page {
 	flex: 1;
 	align-items: center;
 	justify-content: center;
+	display: none;
+	opacity: 0;
 }
 
 .page__content {
 	width: 100%;
 	max-width: 960px;
+	padding-left: 50px;
+	padding-right: 50px;
 }
 
 .nav {
-	flex: 0 1 0;
-	align-self: center;
-	padding-left: 25px;
-	padding-right: 25px;
+	width: 248px;
+	padding-top: 100px;
+	padding-bottom: 100px;
+	background: #C43479;
+	box-shadow: 2px 1px 4px rgba(0, 0, 0, 0.25);
 }
 
 .nav__link {
-	display: inline-block;
-	background-color: #F7F7F7;
-	border: 1px solid #CDCDCD;
-	border-radius: 50%;
-	width: 15px;
-	height: 15px;
-	margin-bottom: 17px;
+	font-family: 'cormorantregular', "Times New Roman", serif;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	line-height: 1.3;
+	display: block;
+	color: #F7F7F7;
+	text-decoration: none;
+	padding: 15px 20px;
+	background-color: #C43479;
+	transition: background-color 0.3s ease-in;
 }
 
-.nav__link--active {
-	background-color: #AC3AAE;
-}
-
+.nav__link--active,
 .nav__link:hover {
-	box-shadow: -2px 3px 4px rgba(0, 0, 0, 0.15)
+	background-color: #B3276A;
+}
+
+@keyframes k-fadeIn {
+	0% {
+		opacity: 0;
+		/*transform: translateX(-1.5%);*/
+	}
+
+	100% {
+		opacity: 1;
+		/*transform: translateX(0);*/
+	}
+}
+
+@keyframes k-fadeOut {
+	0% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+
+	75% {
+		transform: translateX(5%);
+	}
+
+	100% {
+		opacity: 0;
+	}
+}
+
+.fadeIn {
+	animation-name: k-fadeIn;
+	animation-duration: 0.3s;
+	animation-timing-function: ease-in;
+	animation-fill-mode: forwards;
+}
+
+.fadeOut {
+	animation-name: k-fadeOut;
+	animation-duration: 0.3s;
+	animation-timing-function: ease-in;
+	animation-fill-mode: forwards;
 }

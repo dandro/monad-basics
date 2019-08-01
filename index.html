@@ -10,88 +10,185 @@
 <body>
 <main class="main">
     <nav class="nav">
-        <a class="nav__link" href="#home"></a>
-        <a class="nav__link" href="#semigroup"></a>
-        <a class="nav__link" href="#monoid"></a>
-        <a class="nav__link" href="#functor"></a>
-        <a class="nav__link" href="#applicative"></a>
-        <a class="nav__link" href="#monad"></a>
+        <a class="nav__link" href="#home">Home</a>
+        <a class="nav__link" href="#semigroup">Semigroup</a>
+        <a class="nav__link" href="#monoid">Monoid</a>
+        <a class="nav__link" href="#functor">Functor</a>
+        <a class="nav__link" href="#applicative">Applicative Functor</a>
+        <a class="nav__link" href="#monad">Monad</a>
     </nav>
-    <section style="opacity: 0; display: none;" class="page page--home" id="home">
+    <section class="page page--home" id="home">
         <div class="page__content">
             <h2 class="heading__one">What is a Monad?</h2>
             <div class="columns">
                 <div class="columns__col">
-                    <p class="paragraph">The quest for defining what a Monad is has created a large amount of terrible
-                        blog
-                        posts, metaphors and misleading comparisons. This website is meant to simply provide a correct
-                        definition without trying to make it more accessible. I will not explain what a monad is but
-                        will define its elements and laws.</p>
+                    <h3 class="heading__two heading__two--first">Motivation</h3>
+                    <p class="paragraph">The quest for defining what is a Monad has created a large amount of terrible
+                        blog posts, metaphors and misleading comparisons. This website is meant to simply provide a
+                        correct definition without trying to make it more accessible. I will not explain what a monad
+                        is, instead I will define its elements and laws.</p>
+                    <p class="paragraph">Although these definitions are abstract in nature and can be applied to many
+                        fields and disciplines, here we focus on their application to computer programming.</p>
+                </div>
+                <div class="columns__col">
+                    <p class="paragraph">A monad is an idea with laws. A monad is an endofunctor with two natural
+                        transformations called unit and join. A monad is also an applicative functor. An applicative
+                        functor must abide monoidal laws. A monoid is also a semigroup. A monad can be defined as a
+                        monoid in the category of endofunctors.</p>
+                    <p class="paragraph">The following pages will explain in more detail each categorical structure and
+                        law which make a monad. Type definitions use Haskell style function signatures.</p>
                 </div>
             </div>
         </div>
     </section>
-    <section style="opacity: 0; display: none;" class="page page--semigroup" id="semigroup">
+    <section class="page page--semigroup" id="semigroup">
         <div class="page__content">
             <h2 class="heading__one">Semigroup</h2>
             <div class="columns">
                 <div class="columns__col">
-                    <p class="paragraph">In abstract algebra, a Semigroup is a non-empty set with an associative binary
+                    <p class="paragraph">In abstract algebra, a semigroup is a non-empty set with an associative binary
                         operation.</p>
                     <h3 class="heading__two heading__two">Type definition</h3>
                     <code class="code">
-    class Semigroup a where
-        (<>) :: a -> a -> a
-        mappend :: a -> a -> a
+(<>) :: a -> a -> a
+mappend :: a -> a -> a
+                    </code>
+                </div>
+                <div class="columns__col">
+                    <h3 class="heading__two heading__two--first">Laws</h3>
+                    <code class="code">
+Associativity
+(a <> b) <> c ≅ a <> (b <> c)
                     </code>
                 </div>
             </div>
         </div>
     </section>
-    <section style="opacity: 0; display: none;" class="page page--monoid" id="monoid">
+    <section class="page page--monoid" id="monoid">
         <div class="page__content">
             <h2 class="heading__one">Monoid</h2>
             <div class="columns">
                 <div class="columns__col">
-                    <p class="paragraph">A Monoid is a Semigroup with a unit element. Monoid must have the same binary operation
-                        from Semigroup and adds a unit function mempty.</p>
-                    <p class="paragraph">For every object m in category M, binary operation p and unit element u the equation
-                        p(u, m) = m = p(m, u) must hold true for every Monoid. In practical terms, a set of natural numbers N
-                        with a binary operation addition (+) and a unit element 0 is a Monoid.</p>
-                </div>
-                <div class="columns__col">
+                    <p class="paragraph">A monoid is a semigroup with a unit element. Monoid must have the same binary
+                        operation from semigroup, mappend, and adds a unit function mempty.</p>
+                    <p class="paragraph">For every object m in category M, binary operation p and unit element u the
+                        equation p(u, m) = m = p(m, u) must hold true for every monoid. In practical terms, a set of
+                        natural numbers N with a binary operation addition (+) and a unit element zero is a monoid.</p>
                     <h3 class="heading__two heading__two--first">Type definition</h3>
                     <code class="code">
-    class Semigroup m => Monoid m where
-        (<>) :: a -> a -> a
-        mappend :: a -> a -> a
-        mempty :: m
+(<>) :: a -> a -> a
+mappend :: a -> a -> a
+mempty :: m
                     </code>
-                    <h3 class="heading__two">Laws</h3>
-                    <dl class="list">
-                        <dd class="list__item">mappend must be associative</dd>
-                        <dd class="list__item">mempty is it's identity</dd>
-                    </dl>
+                </div>
+                <div class="columns__col">
+                    <h3 class="heading__two heading__two--first">Laws</h3>
+                    <code class="code">
+Associativity
+(a <> b) <> c ≅ a <> (b <> c)
+
+Identity
+(id <> u) ≅ u
+                    </code>
                 </div>
             </div>
         </div>
     </section>
-    <section style="opacity: 0; display: none;" class="page page--functor" id="functor">
+    <section class="page page--functor" id="functor">
         <div class="page__content">
             <h2 class="heading__one">Functor</h2>
             <div class="columns">
                 <div class="columns__col">
                     <p class="paragraph">Functors are structure preserving morphisms between categories. A functor F: A
-                        -> B maps each object a from category A to an object Fa of category B.</p>
+                        -> B maps each object a from category A to an object Fa in category B. Category A in functor F
+                        is called the domain and category B is the codomain.</p>
+                    <p class="paragraph">Functors where the domain and codomain are the same category are called
+                        endofunctors. A functor F: A -> B is called a covariant functor, whereas a contravariant functor
+                        F: A<sup>op</sup> -> B reverses each arrow resulting in F<sub>f</sub> : F<sub>b</sub> ->
+                        F<sub>a</sub>.</p>
+                </div>
+                <div class="columns__col">
+                    <h3 class="heading__two heading__two--first">Type definition</h3>
+                    <code class="code">
+(<$>) :: a -> b -> f a -> f b
+fmap :: a -> b -> f a -> f b
+
+contramap :: a -> b -> f b -> f a
+                    </code>
+                    <h3 class="heading__two">Laws</h3>
+                    <code class="code">
+Identity
+(id <$> x) ≅ x
+
+Composition
+(f . g <$> x) ≅ (f <$> (g <$> x))
+                    </code>
                 </div>
             </div>
         </div>
     </section>
-    <section style="opacity: 0; display: none;" class="page page--applicative" id="applicative">
-        <h2 class="heading__one">Applicative</h2>
+    <section class="page page--applicative" id="applicative">
+        <div class="page__content">
+            <h2 class="heading__one">Applicative Functor</h2>
+            <div class="columns">
+                <div class="columns__col">
+                    <p class="paragraph">An applicative functor is a lax monoidal functor. It must follow functor and
+                        monoidal laws. It provides the pure and <*> (pronounced apply) functions. Pure is used to lift a
+                        pure function f to an applicative functor F<sub>f</sub>.</p>
+                    <p class="paragraph">Apply is a binary function used to sequence computations.</p>
+                    <h3 class="heading__two">Type definition</h3>
+                    <code class="code">
+pure :: (a -> b) -> f (a -> b)
+<*> :: f(a -> b) -> f a -> f b
+                    </code>
+                </div>
+                <div class="columns__col">
+                    <h3 class="heading__two heading__two--first">Laws</h3>
+                    <code class="code">
+Associative composition
+((.) <$> a <*> b <*> c) ≅ (a <*> (b <*> c))
+
+Identity
+pure id <*> x ≅ x
+
+Homomorphism
+pure f <*> pure x ≅ pure (f x)
+
+Composition
+pure (.) <*> u <*> v <*> w ≅ u <*> (v <*> w)
+                    </code>
+                </div>
+            </div>
+        </div>
     </section>
-    <section style="opacity: 0; display: none;" class="page page--monad" id="monad">
-        <h2 class="heading__one">Monad</h2>
+    <section class="page page--monad" id="monad">
+        <div class="page__content">
+            <h2 class="heading__one">Monad</h2>
+            <div class="columns">
+                <div class="columns__col">
+                    <p class="paragraph">A monad, also known as a triple, is an endofunctor with two natural
+                        transformations join and unit. A natural transformation is a mapping of two functors and such
+                        mapping can only exist if both functors have the same domain and codomain. The natural
+                        transformation join acts as the binary operation of a monad corresponding to the structure of a
+                        monoid.</p>
+                    <p class="paragraph">The left and right unit laws as well as the associativity law must hold true
+                        for the structure to be a monad.</p>
+                </div>
+                <div class="column__col">
+                    <h3 class="heading__two heading__two--first">Type definition</h3>
+                    <code class="code">
+return :: a -> m a
+join :: m (m a) -> a
+>>= :: (a -> m b) -> m a -> m b
+                    </code>
+                    <h3 class="heading__two">Laws</h3>
+                    <code class="code">
+Associativity
+g >>= (f >>= x) ≅ ((g >>=) . f) >>= x
+                    </code>
+                </div>
+            </div>
+        </div>
     </section>
 </main>
 

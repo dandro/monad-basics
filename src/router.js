@@ -8,16 +8,20 @@ function makeRoute(id) {
       return new Promise(
         res => {
           element.style.display = 'flex';
-          element.style.opacity = '1';
+          element.classList.remove('fadeOut');
+          element.classList.add('fadeIn');
           setTimeout(res, ANIMATION_TIMING);
         });
     },
     transitionOut() {
       return new Promise(
         res => {
-          element.style.display = 'none';
-          element.style.opacity = '0';
-          setTimeout(res, ANIMATION_TIMING);
+          element.classList.remove('fadeIn');
+          element.classList.add('fadeOut');
+          setTimeout(() => {
+            element.style.display = 'none';
+            res();
+          }, ANIMATION_TIMING);
         });
     },
   };
