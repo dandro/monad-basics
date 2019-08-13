@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="fonts/cormorant-bold.css" />
     <link rel="stylesheet" href="fonts/cormorant-regular.css" />
     <link rel="stylesheet" href="./src/main.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/107/three.min.js"></script>
 </head>
 <body>
 <main class="main">
@@ -27,20 +28,19 @@
             <div class="columns">
                 <div class="columns__col">
                     <h3 class="heading__two heading__two--first">Motivation</h3>
-                    <p class="paragraph">The quest for defining what is a Monad has created a large amount of terrible
+                    <p class="paragraph">The quest for defining what is a Monad has created a large amount of confusing
                         blog posts, metaphors and misleading comparisons. This website is meant to simply provide a
-                        correct definition without trying to make it more accessible. I will not explain what a monad
-                        is, instead I will define its elements and laws.</p>
+                        correct definition without trying to make it more accessible.</p>
                     <p class="paragraph">Although these definitions are abstract in nature and can be applied to many
-                        fields and disciplines, here we focus on their application to computer programming.</p>
+                        fields and disciplines, here we focus on their application to programming.</p>
                 </div>
                 <div class="columns__col">
-                    <p class="paragraph">A monad is an idea with laws. A monad is an endofunctor with two natural
+                    <p class="paragraph">A monad is an idea with laws. It is an endofunctor with two natural
                         transformations called unit and join. A monad is also an applicative functor. An applicative
-                        functor must abide monoidal laws. A monoid is also a semigroup. A monad can be defined as a
-                        monoid in the category of endofunctors.</p>
-                    <p class="paragraph">The following pages will explain in more detail each categorical structure and
-                        law which make a monad. Type definitions use Haskell style function signatures.</p>
+                        functor must abide monoidal laws. A monoid is also a semigroup.</p>
+                    <p class="paragraph">The following pages will define each categorical structure and
+                        law that make up a monad.</p>
+                    <p class="paragraph">All type definitions are written in Haskell.</p>
                 </div>
             </div>
         </div>
@@ -52,7 +52,7 @@
                 <div class="columns__col">
                     <p class="paragraph">In abstract algebra, a semigroup is a non-empty set with an associative binary
                         operation.</p>
-                    <h3 class="heading__two heading__two">Type definition</h3>
+                    <h3 class="heading__two heading__two">Type definitions</h3>
                     <code class="code">
 (<>) :: a -> a -> a
 mappend :: a -> a -> a
@@ -73,12 +73,12 @@ Associativity
             <h2 class="heading__one">Monoid</h2>
             <div class="columns">
                 <div class="columns__col">
-                    <p class="paragraph">A monoid is a semigroup with a unit element. Monoid must have the same binary
+                    <p class="paragraph">A monoid is a semigroup with a unit element, therefor, it has the same binary
                         operation from semigroup, mappend, and adds a unit function mempty.</p>
                     <p class="paragraph">For every object m in category M, binary operation p and unit element u the
                         equation p(u, m) = m = p(m, u) must hold true for every monoid. In practical terms, a set of
                         natural numbers N with a binary operation addition (+) and a unit element zero is a monoid.</p>
-                    <h3 class="heading__two heading__two--first">Type definition</h3>
+                    <h3 class="heading__two heading__two--first">Type definitions</h3>
                     <code class="code">
 (<>) :: a -> a -> a
 mappend :: a -> a -> a
@@ -112,7 +112,7 @@ Identity
                         F<sub>a</sub>.</p>
                 </div>
                 <div class="columns__col">
-                    <h3 class="heading__two heading__two--first">Type definition</h3>
+                    <h3 class="heading__two heading__two--first">Type definitions</h3>
                     <code class="code">
 (<$>) :: a -> b -> f a -> f b
 fmap :: a -> b -> f a -> f b
@@ -140,7 +140,7 @@ Composition
                         monoidal laws. It provides the pure and <*> (pronounced apply) functions. Pure is used to lift a
                         pure function f to an applicative functor F<sub>f</sub>.</p>
                     <p class="paragraph">Apply is a binary function used to sequence computations.</p>
-                    <h3 class="heading__two">Type definition</h3>
+                    <h3 class="heading__two">Type definitions</h3>
                     <code class="code">
 pure :: (a -> b) -> f (a -> b)
 <*> :: f(a -> b) -> f a -> f b
@@ -179,7 +179,7 @@ pure (.) <*> u <*> v <*> w ≅ u <*> (v <*> w)
                         for the structure to be a monad.</p>
                 </div>
                 <div class="column__col">
-                    <h3 class="heading__two heading__two--first">Type definition</h3>
+                    <h3 class="heading__two heading__two--first">Type definitions</h3>
                     <code class="code">
 return :: a -> m a
 join :: m (m a) -> a
@@ -194,8 +194,8 @@ g >>= (f >>= x) ≅ ((g >>=) . f) >>= x
             </div>
         </div>
     </section>
+    <canvas id="canvas" class="canvas"></canvas>
 </main>
-
 <script src="src/router.js"></script>
 <script src="src/main.js"></script>
 </body>
