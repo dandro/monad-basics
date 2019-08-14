@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Category Theory Basics</title>
+    <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="fonts/cormorant-bold.css" />
     <link rel="stylesheet" href="fonts/cormorant-regular.css" />
     <link rel="stylesheet" href="./src/main.css" />
 </head>
 <body>
 <main class="main">
+    <button type="button" id="navTrigger" class="navTrigger">Menu</button>
     <nav class="nav">
         <a href="#home" class="nav__logo">
             <img src="./assets/logo.png" alt="What is a monad?" />
@@ -42,6 +44,10 @@
                     <p class="paragraph">All type definitions are written in Haskell.</p>
                 </div>
             </div>
+            <footer class="page__footer">
+                <h3>References</h3>
+                <p>2019. Aaltodoc.Aalto.Fi. Accessed August 14 2019. https://aaltodoc.aalto.fi/bitstream/handle/123456789/31495/master_Vilja_Peter_2018.pdf?sequence=1&isAllowed=y.</p>
+            </footer>
         </div>
     </section>
     <section class="page page--semigroup" id="semigroup">
@@ -65,6 +71,10 @@ Associativity
                     </code>
                 </div>
             </div>
+            <footer class="page__footer">
+                <h3>References</h3>
+                <p>2019. Aaltodoc.Aalto.Fi. Accessed August 14 2019. https://aaltodoc.aalto.fi/bitstream/handle/123456789/31495/master_Vilja_Peter_2018.pdf?sequence=1&isAllowed=y.</p>
+            </footer>
         </div>
     </section>
     <section class="page page--monoid" id="monoid">
@@ -95,6 +105,10 @@ Identity
                     </code>
                 </div>
             </div>
+            <footer class="page__footer">
+                <h3>References</h3>
+                <p>2019. Aaltodoc.Aalto.Fi. Accessed August 14 2019. https://aaltodoc.aalto.fi/bitstream/handle/123456789/31495/master_Vilja_Peter_2018.pdf?sequence=1&isAllowed=y.</p>
+            </footer>
         </div>
     </section>
     <section class="page page--functor" id="functor">
@@ -128,6 +142,10 @@ Composition
                     </code>
                 </div>
             </div>
+            <footer class="page__footer">
+                <h3>References</h3>
+                <p>2019. Aaltodoc.Aalto.Fi. Accessed August 14 2019. https://aaltodoc.aalto.fi/bitstream/handle/123456789/31495/master_Vilja_Peter_2018.pdf?sequence=1&isAllowed=y.</p>
+            </footer>
         </div>
     </section>
     <section class="page page--applicative" id="applicative">
@@ -162,6 +180,10 @@ pure (.) <*> u <*> v <*> w ≅ u <*> (v <*> w)
                     </code>
                 </div>
             </div>
+            <footer class="page__footer">
+                <h3>References</h3>
+                <p>2019. Aaltodoc.Aalto.Fi. Accessed August 14 2019. https://aaltodoc.aalto.fi/bitstream/handle/123456789/31495/master_Vilja_Peter_2018.pdf?sequence=1&isAllowed=y.</p>
+            </footer>
         </div>
     </section>
     <section class="page page--monad" id="monad">
@@ -191,9 +213,12 @@ g >>= (f >>= x) ≅ ((g >>=) . f) >>= x
                     </code>
                 </div>
             </div>
+            <footer class="page__footer">
+                <h3>References</h3>
+                <p>2019. Aaltodoc.Aalto.Fi. Accessed August 14 2019. https://aaltodoc.aalto.fi/bitstream/handle/123456789/31495/master_Vilja_Peter_2018.pdf?sequence=1&isAllowed=y.</p>
+            </footer>
         </div>
     </section>
-    <canvas id="canvas" class="canvas"></canvas>
 </main>
 <script src="src/router.js"></script>
 <script src="src/main.js"></script>

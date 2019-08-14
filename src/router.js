@@ -18,6 +18,8 @@ function makeRoute(id) {
     transitionOut() {
       return new Promise(
         res => {
+          document.querySelector('main').classList.remove('show-menu');
+
           element.classList.remove('fadeIn');
           element.classList.add('fadeOut');
           setTimeout(() => {
@@ -97,14 +99,14 @@ function animateRoute(asyncFunc) {
 window.addEventListener('keydown', function(event) {
   if (!__ANIMATING__) {
     switch (event.code) {
-      case 'ArrowDown':
+      case 'ArrowRight':
         nextRoute().then(
           hash => {
             window.location.hash = hash;
           }).catch(
           e => console.log(e.message));
         break;
-      case 'ArrowUp':
+      case 'ArrowLeft':
         prevRoute().then(
           hash => {
             window.location.hash = hash;
@@ -115,23 +117,23 @@ window.addEventListener('keydown', function(event) {
   }
 });
 
-window.addEventListener('mousewheel', function(event) {
-  if (!__ANIMATING__) {
-    if (event.wheelDelta > 0) {
-      prevRoute().then(
-        hash => {
-          window.location.hash = hash;
-        }).catch(
-        e => console.log(e.message));
-    } else {
-      nextRoute().then(
-        hash => {
-          window.location.hash = hash;
-        }).catch(
-        e => console.log(e.message));
-    }
-  }
-});
+// window.addEventListener('mousewheel', function(event) {
+//   if (!__ANIMATING__) {
+//     if (event.wheelDelta > 0) {
+//       prevRoute().then(
+//         hash => {
+//           window.location.hash = hash;
+//         }).catch(
+//         e => console.log(e.message));
+//     } else {
+//       nextRoute().then(
+//         hash => {
+//           window.location.hash = hash;
+//         }).catch(
+//         e => console.log(e.message));
+//     }
+//   }
+// });
 
 function updateActiveLink(hash) {
   document
