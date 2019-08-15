@@ -2,19 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Category Theory Basics</title>
     <meta name="viewport" content="width=device-width" />
+
+    <title>Monad Basics</title>
+
+    <!--  STYLESHEETS  -->
     <link rel="stylesheet" href="fonts/cormorant-bold.css" />
     <link rel="stylesheet" href="fonts/cormorant-regular.css" />
     <link rel="stylesheet" href="./src/main.css" />
 </head>
 <body>
 <main class="main">
-    <button type="button" id="navTrigger" class="navTrigger">Menu</button>
+    <!--  MOBILE NAVIGATION  -->
+    <div class="mobileNav">
+        <span class="mobileNav__title">Monad Basics</span>
+        <button type="button" id="navTrigger" class="navTrigger">Menu</button>
+    </div>
+
+    <!--  DESKTOP NAVIGATION  -->
     <nav class="nav">
         <a href="#home" class="nav__logo">
-            <img src="./assets/logo.png" alt="What is a monad?" />
-            <span>What is a monad?</span>
+            <img src="./assets/logo-min.png" alt="What is a monad?" />
+            <span>Monad Basics</span>
         </a>
         <a class="nav__link" href="#home">Home</a>
         <a class="nav__link" href="#semigroup">Semigroup</a>
@@ -23,9 +32,12 @@
         <a class="nav__link" href="#applicative">Applicative Functor</a>
         <a class="nav__link" href="#monad">Monad</a>
     </nav>
+
+    <!--  HOME PAGE  -->
     <section class="page page--home" id="home">
         <div class="page__content">
-            <h2 class="heading__one">What is a Monad?</h2>
+            <!-- PAGE HEADING -->
+            <h2 class="heading__one">Monad Basics</h2>
             <div class="columns">
                 <div class="columns__col">
                     <h3 class="heading__two heading__two--first">Motivation</h3>
@@ -44,14 +56,19 @@
                     <p class="paragraph">All type definitions are written in Haskell.</p>
                 </div>
             </div>
+            <!-- PAGE FOOTER -->
             <footer class="page__footer">
+                <p>This website has been created as part of an assignment in an approved course of study for Curtin University and contains copyright material not created by the author. All copyright material used remains copyright of the respective owners and has been used here pursuant to Section 40 of the Copyright Act 1968 (Commonwealth of Australia). No part of this work may be reproduced without consent of the original copyright owners. See code comments for references.</p>
                 <h3>References</h3>
                 <p>2019. Aaltodoc.Aalto.Fi. Accessed August 14 2019. https://aaltodoc.aalto.fi/bitstream/handle/123456789/31495/master_Vilja_Peter_2018.pdf?sequence=1&isAllowed=y.</p>
             </footer>
         </div>
     </section>
+
+    <!--  SEMIGROUP PAGE  -->
     <section class="page page--semigroup" id="semigroup">
         <div class="page__content">
+            <!-- PAGE HEADING -->
             <h2 class="heading__one">Semigroup</h2>
             <div class="columns">
                 <div class="columns__col">
@@ -59,26 +76,31 @@
                         operation.</p>
                     <h3 class="heading__two heading__two">Type definitions</h3>
                     <code class="code">
-(<>) :: a -> a -> a
-mappend :: a -> a -> a
+(&lt;&gt;) :: a -&gt; a -&gt; a
+mappend :: a -&gt; a -&gt; a
                     </code>
                 </div>
                 <div class="columns__col">
                     <h3 class="heading__two heading__two--first">Laws</h3>
                     <code class="code">
 Associativity
-(a <> b) <> c ≅ a <> (b <> c)
+(a &lt;&gt; b) &lt;&gt; c ≅ a &lt;&gt; (b &lt;&gt; c)
                     </code>
                 </div>
             </div>
+            <!-- PAGE FOOTER -->
             <footer class="page__footer">
+                <p>This website has been created as part of an assignment in an approved course of study for Curtin University and contains copyright material not created by the author. All copyright material used remains copyright of the respective owners and has been used here pursuant to Section 40 of the Copyright Act 1968 (Commonwealth of Australia). No part of this work may be reproduced without consent of the original copyright owners. See code comments for references.</p>
                 <h3>References</h3>
                 <p>2019. Aaltodoc.Aalto.Fi. Accessed August 14 2019. https://aaltodoc.aalto.fi/bitstream/handle/123456789/31495/master_Vilja_Peter_2018.pdf?sequence=1&isAllowed=y.</p>
             </footer>
         </div>
     </section>
+
+    <!--  MONOID PAGE  -->
     <section class="page page--monoid" id="monoid">
         <div class="page__content">
+            <!-- PAGE HEADING -->
             <h2 class="heading__one">Monoid</h2>
             <div class="columns">
                 <div class="columns__col">
@@ -89,8 +111,8 @@ Associativity
                         natural numbers N with a binary operation addition (+) and a unit element zero is a monoid.</p>
                     <h3 class="heading__two heading__two--first">Type definitions</h3>
                     <code class="code">
-(<>) :: a -> a -> a
-mappend :: a -> a -> a
+(&lt;&gt;) :: a -&gt; a -&gt; a
+mappend :: a -&gt; a -&gt; a
 mempty :: m
                     </code>
                 </div>
@@ -98,96 +120,111 @@ mempty :: m
                     <h3 class="heading__two heading__two--first">Laws</h3>
                     <code class="code">
 Associativity
-(a <> b) <> c ≅ a <> (b <> c)
+(a &lt;&gt; b) &lt;&gt; c ≅ a &lt;&gt; (b &lt;&gt; c)
 
 Identity
-(id <> u) ≅ u
+(id &lt;&gt; u) ≅ u
                     </code>
                 </div>
             </div>
+            <!-- PAGE FOOTER -->
             <footer class="page__footer">
+                <p>This website has been created as part of an assignment in an approved course of study for Curtin University and contains copyright material not created by the author. All copyright material used remains copyright of the respective owners and has been used here pursuant to Section 40 of the Copyright Act 1968 (Commonwealth of Australia). No part of this work may be reproduced without consent of the original copyright owners. See code comments for references.</p>
                 <h3>References</h3>
                 <p>2019. Aaltodoc.Aalto.Fi. Accessed August 14 2019. https://aaltodoc.aalto.fi/bitstream/handle/123456789/31495/master_Vilja_Peter_2018.pdf?sequence=1&isAllowed=y.</p>
             </footer>
         </div>
     </section>
+
+    <!--  FUNCTOR PAGE  -->
     <section class="page page--functor" id="functor">
         <div class="page__content">
+            <!-- PAGE HEADING -->
             <h2 class="heading__one">Functor</h2>
             <div class="columns">
                 <div class="columns__col">
                     <p class="paragraph">Functors are structure preserving morphisms between categories. A functor F: A
-                        -> B maps each object a from category A to an object Fa in category B. Category A in functor F
+                        -&gt; B maps each object a from category A to an object Fa in category B. Category A in functor F
                         is called the domain and category B is the codomain.</p>
                     <p class="paragraph">Functors where the domain and codomain are the same category are called
-                        endofunctors. A functor F: A -> B is called a covariant functor, whereas a contravariant functor
-                        F: A<sup>op</sup> -> B reverses each arrow resulting in F<sub>f</sub> : F<sub>b</sub> ->
+                        endofunctors. A functor F: A -&gt; B is called a covariant functor, whereas a contravariant functor
+                        F: A<sup>op</sup> -&gt; B reverses each arrow resulting in F<sub>f</sub> : F<sub>b</sub> -&gt;
                         F<sub>a</sub>.</p>
                 </div>
                 <div class="columns__col">
                     <h3 class="heading__two heading__two--first">Type definitions</h3>
                     <code class="code">
-(<$>) :: a -> b -> f a -> f b
-fmap :: a -> b -> f a -> f b
+(&lt;$&gt;) :: a -&gt; b -&gt; f a -&gt; f b
+fmap :: a -&gt; b -&gt; f a -&gt; f b
 
-contramap :: a -> b -> f b -> f a
+contramap :: a -&gt; b -&gt; f b -&gt; f a
                     </code>
                     <h3 class="heading__two">Laws</h3>
                     <code class="code">
 Identity
-(id <$> x) ≅ x
+(id &lt;$&gt; x) ≅ x
 
 Composition
-(f . g <$> x) ≅ (f <$> (g <$> x))
+(f . g &lt;$&gt; x) ≅ (f &lt;$&gt; (g &lt;$&gt; x))
                     </code>
                 </div>
             </div>
+            <!-- PAGE FOOTER -->
             <footer class="page__footer">
+                <p>This website has been created as part of an assignment in an approved course of study for Curtin University and contains copyright material not created by the author. All copyright material used remains copyright of the respective owners and has been used here pursuant to Section 40 of the Copyright Act 1968 (Commonwealth of Australia). No part of this work may be reproduced without consent of the original copyright owners. See code comments for references.</p>
                 <h3>References</h3>
                 <p>2019. Aaltodoc.Aalto.Fi. Accessed August 14 2019. https://aaltodoc.aalto.fi/bitstream/handle/123456789/31495/master_Vilja_Peter_2018.pdf?sequence=1&isAllowed=y.</p>
             </footer>
         </div>
     </section>
+
+    <!--  APPLICATIVE FUNCTOR PAGE  -->
     <section class="page page--applicative" id="applicative">
         <div class="page__content">
+            <!-- PAGE HEADING -->
             <h2 class="heading__one">Applicative Functor</h2>
             <div class="columns">
                 <div class="columns__col">
                     <p class="paragraph">An applicative functor is a lax monoidal functor. It must follow functor and
-                        monoidal laws. It provides the pure and <*> (pronounced apply) functions. Pure is used to lift a
+                        monoidal laws. It provides the pure and &lt;*&gt; (pronounced apply) functions. Pure is used to lift a
                         pure function f to an applicative functor F<sub>f</sub>.</p>
                     <p class="paragraph">Apply is a binary function used to sequence computations.</p>
                     <h3 class="heading__two">Type definitions</h3>
                     <code class="code">
-pure :: (a -> b) -> f (a -> b)
-<*> :: f(a -> b) -> f a -> f b
+pure :: (a -&gt; b) -&gt; f (a -&gt; b)
+&lt;*&gt; :: f(a -&gt; b) -&gt; f a -&gt; f b
                     </code>
                 </div>
                 <div class="columns__col">
                     <h3 class="heading__two heading__two--first">Laws</h3>
                     <code class="code">
 Associative composition
-((.) <$> a <*> b <*> c) ≅ (a <*> (b <*> c))
+((.) &lt;$&gt; a &lt;*&gt; b &lt;*&gt; c) ≅ (a &lt;*&gt; (b &lt;*&gt; c))
 
 Identity
-pure id <*> x ≅ x
+pure id &lt;*&gt; x ≅ x
 
 Homomorphism
-pure f <*> pure x ≅ pure (f x)
+pure f &lt;*&gt; pure x ≅ pure (f x)
 
 Composition
-pure (.) <*> u <*> v <*> w ≅ u <*> (v <*> w)
+pure (.) &lt;*&gt; u &lt;*&gt; v &lt;*&gt; w ≅ u &lt;*&gt; (v &lt;*&gt; w)
                     </code>
                 </div>
             </div>
+            <!-- PAGE FOOTER -->
             <footer class="page__footer">
+                <p>This website has been created as part of an assignment in an approved course of study for Curtin University and contains copyright material not created by the author. All copyright material used remains copyright of the respective owners and has been used here pursuant to Section 40 of the Copyright Act 1968 (Commonwealth of Australia). No part of this work may be reproduced without consent of the original copyright owners. See code comments for references.</p>
                 <h3>References</h3>
                 <p>2019. Aaltodoc.Aalto.Fi. Accessed August 14 2019. https://aaltodoc.aalto.fi/bitstream/handle/123456789/31495/master_Vilja_Peter_2018.pdf?sequence=1&isAllowed=y.</p>
             </footer>
         </div>
     </section>
+
+    <!--  MONAD PAGE  -->
     <section class="page page--monad" id="monad">
         <div class="page__content">
+            <!-- PAGE HEADING -->
             <h2 class="heading__one">Monad</h2>
             <div class="columns">
                 <div class="columns__col">
@@ -202,24 +239,28 @@ pure (.) <*> u <*> v <*> w ≅ u <*> (v <*> w)
                 <div class="column__col">
                     <h3 class="heading__two heading__two--first">Type definitions</h3>
                     <code class="code">
-return :: a -> m a
-join :: m (m a) -> a
->>= :: (a -> m b) -> m a -> m b
+return :: a -&gt; m a
+join :: m (m a) -&gt; a
+&gt;&gt;= :: (a -&gt; m b) -&gt; m a -&gt; m b
                     </code>
                     <h3 class="heading__two">Laws</h3>
                     <code class="code">
 Associativity
-g >>= (f >>= x) ≅ ((g >>=) . f) >>= x
+g &gt;&gt;= (f &gt;&gt;= x) ≅ ((g &gt;&gt;=) . f) &gt;&gt;= x
                     </code>
                 </div>
             </div>
+            <!-- PAGE FOOTER -->
             <footer class="page__footer">
+                <p>This website has been created as part of an assignment in an approved course of study for Curtin University and contains copyright material not created by the author. All copyright material used remains copyright of the respective owners and has been used here pursuant to Section 40 of the Copyright Act 1968 (Commonwealth of Australia). No part of this work may be reproduced without consent of the original copyright owners. See code comments for references.</p>
                 <h3>References</h3>
                 <p>2019. Aaltodoc.Aalto.Fi. Accessed August 14 2019. https://aaltodoc.aalto.fi/bitstream/handle/123456789/31495/master_Vilja_Peter_2018.pdf?sequence=1&isAllowed=y.</p>
             </footer>
         </div>
     </section>
 </main>
+
+<!--LOAD SCRIPTS -->
 <script src="src/router.js"></script>
 <script src="src/main.js"></script>
 </body>

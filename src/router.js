@@ -49,7 +49,7 @@ function initRouter() {
     mountRouteByHash(hash.substr(1)).then(updateActiveLink.bind(null, hash));
   } else {
     Router.routes[0].transitionIn();
-    updateActiveLink(Router.routes[0].element.getAttribute('href'));
+    updateActiveLink(`#${Router.routes[0].element.getAttribute('id')}`);
   }
 }
 
@@ -116,24 +116,6 @@ window.addEventListener('keydown', function(event) {
     }
   }
 });
-
-// window.addEventListener('mousewheel', function(event) {
-//   if (!__ANIMATING__) {
-//     if (event.wheelDelta > 0) {
-//       prevRoute().then(
-//         hash => {
-//           window.location.hash = hash;
-//         }).catch(
-//         e => console.log(e.message));
-//     } else {
-//       nextRoute().then(
-//         hash => {
-//           window.location.hash = hash;
-//         }).catch(
-//         e => console.log(e.message));
-//     }
-//   }
-// });
 
 function updateActiveLink(hash) {
   document
