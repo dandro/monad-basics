@@ -236,7 +236,7 @@ pure (.) &lt;*&gt; u &lt;*&gt; v &lt;*&gt; w ≅ u &lt;*&gt; (v &lt;*&gt; w)
                     <p class="paragraph">The left and right unit laws as well as the associativity law must hold true
                         for the structure to be a monad.</p>
                 </div>
-                <div class="column__col">
+                <div class="columns__col">
                     <h3 class="heading__two heading__two--first">Type definitions</h3>
                     <code class="code">
 return :: a -&gt; m a
@@ -258,6 +258,27 @@ g &gt;&gt;= (f &gt;&gt;= x) ≅ ((g &gt;&gt;=) . f) &gt;&gt;= x
             </footer>
         </div>
     </section>
+
+    <div class="toolbox">
+        <div class="toolbox__container">
+            <div class="toolbox__item toolbox__item--fontSize">
+                <span>a</span>
+                <input id="adjustFontSize" type="range" min="13" max="19" value="16" />
+                <span>A</span>
+            </div>
+
+            <div class="toolbox__item toolbox__item--readMode">
+                <label for="adjustReadMode" class="toolbox__item__button">
+                    <input type="checkbox" id="adjustReadMode" />
+                    <span>Read mode</span>
+                </label>
+            </div>
+
+            <div class="toolbox__item toolbox__item--arrowsText">
+                <span>Use <span class="highlight">&larr;</span> and <span class="highlight">&rarr;</span> to navigate through the site</span>
+            </div>
+        </div>
+    </div>
 </main>
 
 <!--LOAD SCRIPTS -->

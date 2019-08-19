@@ -69,6 +69,10 @@ body {
 	overflow-x: auto;
 }
 
+.highlight {
+	color: #C43479;
+}
+
 .columns {
 	display: flex;
 	flex-wrap: wrap;
@@ -116,7 +120,7 @@ body {
 	.page {
 		flex: 1;
 		align-items: center;
-		padding: 50px;
+		padding: 50px 50px 100px 50px;
 	}
 }
 
@@ -369,4 +373,118 @@ body {
 	animation-duration: 0.3s;
 	animation-timing-function: ease-in;
 	animation-fill-mode: forwards;
+}
+
+.toolbox {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	width: calc(100% - 252px);
+	background: #F7F7F7;
+	border-top: 1px solid #d3d3d3;
+}
+
+.toolbox__container {
+	padding: 25px;
+	display: flex;
+	align-items: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.toolbox__item:not(:last-child) {
+	margin-right: 45px;
+}
+
+.toolbox__item--fontSize span {
+	font-size: 16px;
+	font-family: 'cormorantregular', "Times New Roman", serif;
+}
+
+.toolbox__item--fontSize  input {
+	-webkit-appearance: none;
+	height: 5px;
+	border-radius: 5px;
+	background: #d3d3d3;
+	outline: none;
+	opacity: 0.7;
+	transition: opacity .2s;
+}
+
+.toolbox__item--arrowsText {
+	font-size: 13px;
+	color: #333;
+}
+
+.toolbox__item--arrowsText .highlight {
+	font-size: 19px;
+	font-family: 'cormorantbold', "Times New Roman", serif;
+}
+
+.toolbox__item--fontSize  input::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	background: #C43479;
+	cursor: pointer;
+}
+
+.toolbox__item--fontSize  input::-moz-range-thumb {
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	background: #C43479;
+	cursor: pointer;
+}
+
+.toolbox__item__button {
+	cursor: pointer;
+}
+
+.toolbox__item__button input {
+	display: none;
+}
+
+.toolbox__item__button span {
+	font-size: 13px;
+	display: inline-block;
+	padding: 10px 25px;
+	border-radius: 7px;
+	background-color: #F7F7F7;
+	color: #C43479;
+	border: 1px solid #C43479;
+	transition: background-color 0.3s ease-in;
+}
+
+.toolbox__item__button input:checked + span {
+	background-color: #C43479;
+	color: #F7F7F7;
+}
+
+body.readMode {}
+
+body.readMode .page::before {
+	background-image: none;
+}
+
+body.readMode .toolbox__container,
+body.readMode .page__content {
+	max-width: 700px;
+}
+
+body.readMode .nav {
+	display: none;
+}
+
+body.readMode .columns__col {
+	max-width: 100%;
+	width: 100%;
+	margin-right: 0;
+	margin-bottom: 19px;
+}
+
+body.readMode .toolbox {
+	width: 100%;
 }
